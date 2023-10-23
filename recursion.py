@@ -69,5 +69,40 @@
 
 #############################################
 
+## fibonacci number using recursion
 
+# def fibonacci(num):
+#     if num == 0:
+#         return 0
+#     elif num == 1:
+#         return 1
+#     else:
+#         return fibonacci(num-1) + fibonacci(num-2)
 
+# print(fibonacci(8))
+
+#################################################
+## fibonacci efficient way
+# def goodfibonacci(num):
+#     if num <= 1:
+#         return (num,0)
+#     else:
+#         (a,b) = goodfibonacci(num-1)
+#         print(a,b)
+#         return (a+b,a)
+    
+# print(goodfibonacci(5))
+
+#################################################
+
+## two power
+# def twopower(n):
+#     if n == 1:
+#         return True
+#     elif n >= 2:
+#         return twopower(n / 2)
+#     else:
+#         return False
+# print(twopower(16))
+
+##################################################
