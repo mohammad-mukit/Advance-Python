@@ -79,7 +79,7 @@
 #     else:
 #         return fibonacci(num-1) + fibonacci(num-2)
 
-# print(fibonacci(8))
+# print(fibonacci(4))
 
 #################################################
 ## fibonacci efficient way
@@ -88,10 +88,8 @@
 #         return (num,0)
 #     else:
 #         (a,b) = goodfibonacci(num-1)
-#         print(a,b)
 #         return (a+b,a)
-    
-# print(goodfibonacci(5))
+# print(goodfibonacci(6))
 
 #################################################
 
@@ -106,3 +104,32 @@
 # print(twopower(16))
 
 ##################################################
+## recursion for reversing an array
+
+# given_array = [2,3,4,6,7,9,8,10]
+
+# def reversearray(arr,start,end):
+    
+#     if start < end-1:
+#         arr[start],arr[end - 1] = arr[end-1],arr[start]
+#         reversearray(arr,start+1,end-1) 
+#     return arr
+
+# print(reversearray(given_array,0,len(given_array)))
+#######################################################
+## important lesson dsa in python book page 172-173
+## calculate power using recursion
+
+# def power(base,p):
+#     if p == 0:
+#         return 1
+#     else:
+#         partial = power(base, p // 2)
+#         result = partial * partial
+#         if p % 2 == 1:
+#             result *= base
+#         return result
+    
+# print(power(2,5))
+
+#############################################################
