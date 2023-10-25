@@ -5,11 +5,11 @@
 #         return 1
 #     else:
 #         return num * factorial(num-1)
-    
+
 # print(factorial(5))
 
 ######################################
-## calculate sum using recursion
+# calculate sum using recursion
 
 # given_array = [2, 4, 5, 7, 8, 12, 14, 17, 19, 22, 25, 27, 28, 33, 37]
 
@@ -24,7 +24,7 @@
 
 ##################################################
 
-## Binary search using recursion
+# Binary search using recursion
 
 # given_array = [2, 4, 5, 7, 8, 12, 14, 17, 19, 22, 25, 27, 28, 33, 37]
 
@@ -39,12 +39,12 @@
 #             return binarysearch_recursion(arr,target,mid+1,high)
 #         else:
 #             return binarysearch_recursion(arr,target,low,mid-1)
-        
+
 # print(binarysearch_recursion(given_array,27,0,len(given_array)-1))
 
 ##################################################
 
-## draw a ruller using recursion
+# draw a ruller using recursion
 
 # def draw_line(tick_length, tick_label=''):
 #     line = '-' * tick_length
@@ -69,7 +69,7 @@
 
 #############################################
 
-## fibonacci number using recursion
+# fibonacci number using recursion
 
 # def fibonacci(num):
 #     if num == 0:
@@ -82,7 +82,7 @@
 # print(fibonacci(4))
 
 #################################################
-## fibonacci efficient way
+# fibonacci efficient way
 # def goodfibonacci(num):
 #     if num <= 1:
 #         return (num,0)
@@ -93,7 +93,7 @@
 
 #################################################
 
-## two power
+# two power
 # def twopower(n):
 #     if n == 1:
 #         return True
@@ -104,21 +104,21 @@
 # print(twopower(16))
 
 ##################################################
-## recursion for reversing an array
+# recursion for reversing an array
 
 # given_array = [2,3,4,6,7,9,8,10]
 
 # def reversearray(arr,start,end):
-    
+
 #     if start < end-1:
 #         arr[start],arr[end - 1] = arr[end-1],arr[start]
-#         reversearray(arr,start+1,end-1) 
+#         reversearray(arr,start+1,end-1)
 #     return arr
 
 # print(reversearray(given_array,0,len(given_array)))
 #######################################################
-## important lesson dsa in python book page 172-173
-## calculate power using recursion
+# important lesson dsa in python book page 172-173
+# calculate power using recursion
 
 # def power(base,p):
 #     if p == 0:
@@ -129,7 +129,70 @@
 #         if p % 2 == 1:
 #             result *= base
 #         return result
-    
-# print(power(2,5))
+
+# print(power(2,3))
 
 #############################################################
+
+# power of three
+# def threepower(n):
+#     if n <= 0:
+#         return False
+#     if n == 1:
+#         return True
+#     else:
+#         result = threepower(n / 3)
+#         if result & result == True:
+#             return True
+#         else:
+#             return False
+
+# print(threepower(6))
+
+############################################################
+# another approach of calculating power of any number
+# example for number 4. this is efficient from above solution
+# def power(n):
+#     if n == 1 or n == 4:
+#         return True
+#     if n > 4 and n % 4 == 0:
+#         return power(n / 4)
+#     return False
+# print(power(16))
+
+############################################################
+# calcutlating sum of an array using binary recursion
+
+# given_array = [2,4,6,7,8,9,2,3,6,5]
+
+# def binaryrecursum(arr,start,end):
+#     if start >= end:
+#         return 0
+#     elif start == end-1:
+#         return arr[start]
+#     else:
+#         mid = (start + end)//2
+#         return binaryrecursum(arr,start,mid) + binaryrecursum(arr,mid,end)
+
+# print(binaryrecursum(given_array,0,len(given_array)))
+
+##############################################################
+# all permutation using multiple recursion
+
+k = 3
+s = ''
+u = {'a','b','c'}
+puzzle = 'acb'
+
+def allpermutation(k,s,u):
+    for item in u:
+        s += item
+        u.remove(item)
+        if k == 1:
+            return s
+        else:
+            allpermutation(k-1,s,u)
+        s = s.removesuffix(item)
+        u.add(item)
+        
+allpermutation(k,s,u)
