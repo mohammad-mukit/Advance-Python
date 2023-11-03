@@ -69,7 +69,7 @@
 
 #############################################
 
-# fibonacci number using recursion
+# fibonacci number using recursion not efficient
 
 # def fibonacci(num):
 #     if num == 0:
@@ -131,6 +131,29 @@
 #         return result
 
 # print(power(2,3))
+############################################################
+## power negative number also
+# def findpower(x,n):
+#     if n < 0:
+#         partial = findpower(x,abs(n)//2)
+#         result = partial * partial
+#         if n % 2 == 1:
+#             result = result * x
+#         return 1/result
+
+#     if n == 0:
+#         return 1
+#     elif n == 1:
+#         return x
+#     else:
+#         partial = findpower(x,n//2)
+#         result = partial * partial
+#         if n % 2 == 1:
+#             result = result * x
+        
+#     return result
+
+# print(findpower(2,-4))
 
 #############################################################
 
@@ -179,20 +202,186 @@
 ##############################################################
 # all permutation using multiple recursion
 
-k = 3
-s = ''
-u = {'a','b','c'}
-puzzle = 'acb'
+# k = 3
+# s = ''
+# u = {'a','b','c'}
+# puzzle = 'acb'
 
-def allpermutation(k,s,u):
-    for item in u:
-        s += item
-        u.remove(item)
-        if k == 1:
-            return s
-        else:
-            allpermutation(k-1,s,u)
-        s = s.removesuffix(item)
-        u.add(item)
+# def allpermutation(k,s,u):
+#     for item in u:
+#         s += item
+#         u.remove(item)
+#         if k == 1:
+#             return s
+#         else:
+#             allpermutation(k-1,s,u)
+#         s = s.removesuffix(item)
+#         u.add(item)
         
-allpermutation(k,s,u)
+# allpermutation(k,s,u)
+
+##################################################
+##  code to review carefully
+
+# def permutations(sequence):
+#     if len(sequence) <= 1:
+#         return sequence
+    
+#     # List to store all permutations
+#     result = []
+    
+#     for i in range(len(sequence)):
+#         # Extract the current element
+#         current_element = sequence[i]
+        
+#         # Generate all permutations of the remaining elements
+#         remaining_elements = sequence[:i] + sequence[i+1:]
+#         remaining_permutations = permutations(remaining_elements)
+#         print(remaining_permutations)
+#         # # print(result)
+
+        
+#         # Append the current element to each permutation of the remaining elements
+#         for perm in remaining_permutations:
+#             result.append(current_element + perm)
+#         # print(result)
+    
+#     return result
+
+# # Example usage:
+# sequence = 'muk'
+# permutations(sequence)
+# all_permutations = permutations(sequence)
+# for perm in all_permutations:
+#     print(perm)
+
+#################################
+# def per(seq):
+#     if len(seq) <= 1:
+#         return seq
+    
+#     res = []
+
+#     for i in range(len(seq)):
+#         ce = seq[i]
+#         re = seq[:i] + seq[i+1:]
+#         rp = per(re)
+#         print(f'rem per {rp}')
+
+#         for p in rp:
+#             print(f'current {ce}')
+#             print(f'rem ele {re}')
+#             res.append(f'{ce + p}')
+#             print(f'res {res}')
+#     return res       
+        
+# per('muk')
+
+###################################################
+## find max uging recursion
+# given_array = [4,5,3,6,2,9,5,7]
+
+# def findmax(arr,n,max):
+#     if n == 0:
+#         return max
+#     else:
+#         if arr[n-1] > max:
+#             max = arr[n-1]
+#     return findmax(arr,n-1,max)
+    
+# print(findmax(given_array,len(given_array),0))
+############################################################
+## max using binary recursion
+# given_array = [4,5,3,6,2,9,5,7]
+# def binarymax(arr,start,end):
+#     if start >= end:
+#         return 0
+#     elif start == end-1:
+#         return arr[start]
+#     else:
+#         mid = (start + end) // 2
+#         if binarymax(arr,start,mid) > binarymax(arr,mid,end):
+#             max = binarymax(arr,start,mid)
+#             print(max)
+#         else:
+#             max = binarymax(arr,mid,end)
+#             print(max)
+#     return max
+
+# print(binarymax(given_array,0,len(given_array)))
+
+#############################################################
+## recursive function to convert string to integer
+# s = '13542'
+# n = len(s)-1
+# m = 1
+
+# def strtoint(s,n,m,res):
+#     if n < 0:
+#         return res
+#     else:
+#         res += int(s[n]) * m + strtoint(s[:n],n-1,m*10,res)
+        
+#     return res
+
+# print(strtoint(s,n,1,0))
+
+# res = 0
+# for i in range(len(s)-1,-1,-1):
+#     res += int(s[i]) * m
+#     m *= 10
+
+# print(res)
+
+########################################################
+
+## recursive function for multiplying number using addition and subtraction
+
+# def multiply(m,n,res):
+#     if n == 0:
+#         return res
+#     else:
+#         return m + multiply(m,n-1,res)
+    
+# print(multiply(2,15,0))
+
+###################################################
+## finding integer uniqueness using recursion
+
+# given_arr =[3,1,4,7,3,5,1,5]
+
+# def findduplicate(arr,index):
+#     if index == len(arr)-1:
+#         return False
+#     if arr[index] in arr[index+1:]:
+#         return True
+    
+#     return findduplicate(arr,index+1)
+    
+# print(findduplicate(given_arr,0))
+    
+# def findduplicateloop(arr):
+#     for i in range(len(arr)-1):
+#         for j in range(i+1,len(arr)):
+#             if arr[i] == arr[j]:
+#                 print(arr[i])
+#             else:
+#                 continue
+# findduplicateloop(given_arr)
+
+
+# given_arr =[3,1,1,4,7,3,5,5]
+# def findduplicaterecur(arr,i):
+#     if i == len(arr)-1:
+#         return 
+#     if arr[i]  in arr[i+1:]:
+#         print(f'{arr[i]} is duplicate')
+#         return findduplicaterecur(arr,i+1)
+#     else:
+#         return findduplicaterecur(arr,i+1)
+
+# findduplicaterecur(given_arr,0)
+
+###########################################################
+
+
